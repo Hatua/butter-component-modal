@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "prop-types": "^15.5.10",
-    "react-i18next": "^3.1.0",
+    "react-i18next": "^7.6.0",
     "react-transition-group": "^2.3.1"
   },
   "scripts": {
