@@ -1,3 +1,3 @@
-import {Menu, RouterMenu} from './src'
+import {Modal} from './src'
 
-export {Menu as default, RouterMenu}
+export {Modal as default}

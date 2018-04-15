@@ -1,72 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
-import {HashRouter, NavLink} from 'react-router-dom';
-
+import React, { Component } from 'react';
+import { translate } from 'react-i18next';
+import {TransitionGroup, CCSTransition} from 'react-transition-group'
 import style from './style.styl';
 
-let MenuItem = ({title, active, onClick}) => (
-    <a className={active ? 'active' : null} aria-current={active} href='#' onClick={onClick}>
-        <li>{title}</li>
-    </a>
+let Modal = ({position, action, children}) => (
+    <div className={style.modal} data-position={position} key={0}>
+        <div className={style.widget}>
+            {children}
+        </div>
+        <div className={style.overlay} onClick={action.apply}></div>
+    </div>
 )
 
-
-class Menu extends React.Component {
-
-    static propTypes = {
-        items: PropTypes.array.isRequired,
-        selected: PropTypes.number
-    }
-
-    static defaultProps = {
-        active: 0,
-    }
-
-    constructor(props) {
-        super(props)
-        this.state = {
-            active: this.props.active,
-        }
-    }
-
-    setActiveItem = (item) => {
-        this.setState({active: item})
-    }
-
-    render() {
-        const {items} = this.props;
-        return(
-            <nav className={style['app-menu']}>
-                <ul>
-                    {items.map((i, k) => (
-                        <MenuItem key={k} active={this.state.active === k} {...i} onClick={event => this.setActiveItem(k)} />
-                    ))}
-                </ul>
-                <i className={style['active-marker']}></i>
-            </nav>
+class ButterModal extends Component {
+    render () {
+        let {show, ...props} = this.props
+        return (
+            <TransitionGroup>
+                <CSSTransition key={1} className="popup" timeout={{ enter: 500, exit: 300}}>
+                    {show && <Modal {...props}/>}
+                </CSSTransition>
+            </TransitionGroup>
         )
     }
 }
 
-let RouterMenu = ({items}) => (
-    <nav className={style['app-menu']}>
-        <ul>
-            {items.map((e) => (
-                <NavLink to={e.path}><li>{e.title}</li></NavLink>
-            ))}
-        </ul>
-    </nav>
-)
-
-let Test = (props) => (
-    <HashRouter>
-        <div style={{background: 'black'}}>
-            <Menu {...props}/>
-            <br />
-            <RouterMenu {...props}/>
-        </div>
-    </HashRouter>
-)
-
-export {Test as default, Menu, RouterMenu}
+export default translate(['modal'], {wait: true, withRef: true})(ButterModal);

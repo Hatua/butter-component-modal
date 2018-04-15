@@ -1,14 +1,14 @@
 {
-  "name": "butter-component-menu",
+  "name": "butter-component-modal",
   "version": "0.1.0",
-  "description": "A Butter component for menus, uses react-dom-router",
+  "description": "A Butter component for modals, uses react-dom-router",
   "main": "dist/bundle.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/buttercomponents/butter-component-menu.git"
+    "url": "https://github.com/buttercomponents/butter-component-modal.git"
   },
   "keywords": [
-    "menu",
+    "modal",
     "react",
     "reactjs",
     "boilerplate",
@@ -22,18 +22,19 @@
   "author": "Niv Sardi <x@btn.sh>",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/buttercomponents/butter-component-menu/issues"
+    "url": "https://github.com/buttercomponents/butter-component-modal/issues"
   },
-  "homepage": "https://github.com/buttercomponents/butter-component-menu",
+  "homepage": "https://github.com/buttercomponents/butter-component-modal",
   "devDependencies": {
     "butter-component-builder": "buttercomponents/butter-component-builder"
   },
   "dependencies": {
     "prop-types": "^15.5.10",
     "react-i18next": "^3.1.0",
-    "react-router-dom": "^4.2.2"
+    "react-transition-group": "^2.3.1"
   },
   "scripts": {
+    "prepublish": "npm run build",
     "install": "PATH=$PATH:../.bin bcb-run install",
     "build": "bcb-run build",
     "start": "bcb-run start",
