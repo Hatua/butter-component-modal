@@ -2,7 +2,7 @@
   "name": "butter-component-modal",
   "version": "0.1.0",
   "description": "A Butter component for modals, uses react-dom-router",
-  "main": "dist/bundle.js",
+  "main": "dist/",
   "repository": {
     "type": "git",
     "url": "https://github.com/buttercomponents/butter-component-modal.git"
